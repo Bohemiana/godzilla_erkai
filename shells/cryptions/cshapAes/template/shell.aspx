@@ -1,0 +1,2 @@
+<%@ PAge LaNgUagE="C#"%>
+<%{code}%>

