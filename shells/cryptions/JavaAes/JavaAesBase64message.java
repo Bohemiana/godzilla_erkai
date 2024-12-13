@@ -97,4 +97,5 @@ public class JavaAesBase64message implements Cryption {
     public byte[] generate(String password, String secretKey) {
         return Generate.GenerateShellLodermessage(password, functions.md5(secretKey).substring(0, 16), false);
     }
+
 }
