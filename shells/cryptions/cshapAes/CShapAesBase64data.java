@@ -99,7 +99,7 @@ public class CShapAesBase64data implements Cryption {
     }
 
     public byte[] generate(String password, String secretKey) {
-        return Generate.GenerateShellLoderdata(functions.base64EncodeToString(functions.base64EncodeToString(functions.base64EncodeToString(password.getBytes()).getBytes()).getBytes()), functions.md5(secretKey).substring(0, 16) ,this.getClass().getSimpleName());
+        return Generate.GenerateShellLoderdata(password, functions.md5(secretKey).substring(0, 16) ,this.getClass().getSimpleName());
     }
 
 }

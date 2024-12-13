@@ -15,4 +15,5 @@ public @interface PluginAnnotation {
     String Name();
 
     String DisplayName();
+
 }
