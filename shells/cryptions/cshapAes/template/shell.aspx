@@ -1,2 +1,2 @@
-<%@ PAge LaNgUagE="C#"%>
 <%{code}%>
+<% @language="c#" %>
